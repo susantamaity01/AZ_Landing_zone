@@ -24,7 +24,7 @@ jobs:
         
       
       - name: Terraform Init
-        working-directory: Environments/dev
+        working-directory: Environments/UAT
         run: terraform init
 
       - name: Run tfsec
@@ -37,7 +37,7 @@ jobs:
            
       # 5. Terraform Plan
       - name: Terraform Plan
-        working-directory: Environments/dev
+        working-directory: Environments/UAT
         run: terraform plan
 
       # 6. Terraform Apply
