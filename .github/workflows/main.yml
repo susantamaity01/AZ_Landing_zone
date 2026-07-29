@@ -1,1 +1,43 @@
-##
+name: Dummy Workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo "Hello, world!"
+      - name: azure login
+        run: az login --service-principal --username 64d08673-8194-4a9d-871a-c144dbf1f511 --password yrg8Q~ofhHvwFASVgJnhdrqUnW_k~-DIGrIBLcSO --tenant 307acfe9-feb9-4a76-a305-a8430624c05b
+
+
+
+        # INSTALL TERRAFORM
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        
+      
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Run tfsec
+        uses: aquasecurity/tfsec-action@v1.0.3
+        
+      - name: Setup TFLint
+        uses: terraform-linters/setup-tflint@v6.3.0
+        with:
+          tflint_version: latest
+           
+      # 5. Terraform Plan
+      - name: Terraform Plan
+        run: terraform plan
+
+      # 6. Terraform Apply
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
