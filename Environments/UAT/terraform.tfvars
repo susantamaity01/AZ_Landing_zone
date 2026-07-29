@@ -7,6 +7,10 @@ resource_group = {
     name     = "test-rg"
     location = "eastus"
   }
+  rg03 = {
+    name     = "test3-rg"
+    location = "eastus"
+  }
 }
 
 vnet = {
