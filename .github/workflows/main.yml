@@ -42,4 +42,5 @@ jobs:
 
       # 6. Terraform Apply
       - name: Terraform Apply
+        working-directory: Environments/UAT
         run: terraform apply -auto-approve
